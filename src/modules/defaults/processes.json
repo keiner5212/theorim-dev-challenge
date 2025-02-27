@@ -1,0 +1,151 @@
+{
+    "name": "capability",
+    "label": "Capability Inventory",
+    "description": "Inventory of company processes and capabilties",
+    "allow": {
+        "model": null,
+        "_restrictEdit": true,
+        "_restrictView": true
+    },
+    "views": [],
+    "schemas": [
+        {
+            "$id": "domain",
+            "description": "Top level domain functions",
+            "required": ["name"],
+            "$parents": [],
+            "$allow": { 
+                "_creators": [],
+                "_deletors": [],    
+                "create": null, 
+                "delete": null
+            },
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9 ]+$",
+                    "minLength": 3,
+                    "maxLength": 50,
+                    "description": "Name of the domain"
+                },
+                "description": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9., ]+$",
+                    "maxLength": 250,
+                    "description": "Description of the domain",
+                    "$is": "textarea"
+                }
+            }
+        },
+        {
+            "$id": "process",
+            "description": "A workflow that can be mapped as a series of steps",
+            "required": ["name"],
+            "$parents": ["domain","process", "capability"],
+            "$allow": { 
+                "_creators": [],
+                "_deletors": [],    
+                "create": null, 
+                "delete": null
+            },
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9 ]+$",
+                    "minLength": 3,
+                    "maxLength": 50,
+                    "description": "Name of the process"
+                },
+                "description": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9., ]+$",
+                    "maxLength": 250,
+                    "description": "Description of the process",
+                    "$is": "textarea"
+                },
+                "bpmn":{
+                    "type": "string",
+                    "description": "BPMN XML for the process",
+                    "$is": "file"
+                }
+                
+            }
+        },
+        {
+            "$id": "capability",
+            "description": "An activity like sales or engagement",
+            "required": ["name"],
+            "$parents": ["domain","capability"],
+            "$allow": { 
+                "_creators": [],
+                "_deletors": [],    
+                "create": null, 
+                "delete": null
+            },
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9 ]+$",
+                    "minLength": 3,
+                    "maxLength": 50,
+                    "description": "Name of the capability"
+                },
+                "description": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9., ]+$",
+                    "maxLength": 250,
+                    "description": "Description of the capability",
+                    "$is": "textarea"
+                },
+                "allocation": {
+                    "type": "number",
+                    "description": "FTE allocation to this activity",
+                    "minimum": 0
+                },
+                "bpmn":{
+                    "type": "string",
+                    "description": "BPMN XML for the process",
+                    "$is": "file"
+                }
+            }
+        },
+        {
+            "$id": "task",
+            "description": "An activity like sales or engagement",
+            "required": ["name"],
+            "$parents": ["process"],
+            "$allow": { 
+                "_creators": [],
+                "_deletors": [],    
+                "create": null, 
+                "delete": null
+            },
+            "properties": {
+                "name": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9 ]+$",
+                    "minLength": 3,
+                    "maxLength": 50,
+                    "description": "Name of the capability"
+                },
+                "description": {
+                    "type": "string",
+                    "pattern": "^[a-zA-Z0-9., ]+$",
+                    "maxLength": 250,
+                    "description": "Description of the capability",
+                    "$is": "textarea"
+                },
+                "allocation": {
+                    "type": "number",
+                    "description": "FTE allocation to this activity",
+                    "minimum": 0
+                },
+                "bpmn":{
+                    "type": "string",
+                    "description": "BPMN XML for the process",
+                    "$is": "file"
+                }
+            }
+        }
+    ]
+}

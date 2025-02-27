@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Theorim</title>
+  <link rel="icon" type="image/png" href="./img/logo_favicon.svg">
+  <link rel="stylesheet" build="fonts" href="./css/fonts/fonts.css">
+  <link rel="stylesheet" build="index.css" href="./css/index.css">
+  <!--        BASE COMPONENTS & LIBS        -->
+  <script build="globals.js" src="./js/globals/errors.js"></script>
+  <script build="globals.js" src="./js/globals/Global.js"></script>
+  <!-- Elmnts -->
+  <script build="elmnts.js" src="./js/elmnts/lib/elmnts.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/lib/contextMenu.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-boolean.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-radio.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-date.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-iconpicker.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-list.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-multiline.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-number.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-slct.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-string.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-complex.js"></script>
+  <script build="elmnts.js" src="./js/elmnts/inputs/i-table.js"></script>
+  <script build="components.js" src="./js/elmnts/inputs/i-index.js" ></script>
+  <script build="elmnts.js" src="./js/elmnts/components/app-icon.js"></script>
+  <script build="components.js" src="./js/elmnts/components/e-table.js"></script>
+  <!-- App Components -->
+  <script build="components.js" src="./js/elmnts/components/el-loader.js"></script>
+  <script build="components.js" src="./js/elmnts/components/cmd-window.js"></script>
+  <script build="components.js" src="./js/elmnts/components/elmnts-form.js"></script>
+  <script build="components.js" src="./js/elmnts/components/nav-bar.js" ></script>
+  <script build="components.js" src="./js/elmnts/components/splash-screen.js"></script>
+  <script build="components.js" src="./js/elmnts/components/tab-bar.js"></script>
+  <script build="components.js" src="./js/elmnts/components/loader-screen.js"></script>
+  <script build="components.js" src="./js/elmnts/components/m-button.js"></script>
+  <!-- Data Components -->
+  <script build="data_components.js" src="./js/data_components/dataset-controller.js"></script>
+  <script build="data_components.js" src="./js/data_components/dv-controller.js"></script>
+  <script build="data_components.js" src="./js/data_components/data-import-window.js"></script>
+  <script build="data_components.js" src="./js/data_components/schema-import-window.js"></script>
+  <script build="data_components.js" src="./js/data_components/restore-data-window.js" ></script>
+  <script build="data_components.js" src="./js/data_components/create-link-window.js" ></script>
+  <script build="data_components.js" src="./js/data_components/i-rel.js"></script>
+  <script build="data_components.js" src="./js/data_components/i-file.js" ></script>
+  <script build="data_components.js" src="./js/data_components/i-relbuilder.js" ></script>
+  <script build="data_components.js" src="./js/data_components/i-roles.js" ></script>
+  <script build="data_components.js" src="./js/data_components/i-history.js" ></script>
+  <script build="data_components.js" src="./js/data_components/i-comments.js" ></script>
+  <script build="data_components.js" src="./js/data_components/i-queries.js" ></script>
+  <script build="data_components.js" src="./js/data_components/data-el-table.js" ></script>
+   <!--        APP MODULES         -->
+   <script src="./js/modules/ModuleBaseClass.js"></script>
+  <!-- Admin -->
+  <script src="./js/modules/admin/AdminModule.js"></script>
+  <script src="./js/modules/admin/dataset-controller-admin.js" ></script>
+  <!-- AI -->
+  <script src="./js/modules/ai/AiModule.js"></script>
+  <!-- Data -->
+  <script src="./js/modules/data/DataUserModule.js"></script>
+  <!-- Item -->
+  <script src="./js/modules/item/ItemModule.js"></script>
+  <!-- Modeler -->
+  <script src="./js/modules/modeler/OwnerModule.js" ></script>
+  <script src="./js/modules/modeler/dataset-controller-modeler.js" ></script>
+  <!-- Controller -->
+  <script src="./js/app-controller.js" ></script>
+</head>
+<body>
+  <app-controller></app-controller>
+  <script>
+    function addLoadedClass() { document.body.classList.add('loaded'); }
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      // DOM is already loaded
+      addLoadedClass();
+    } else {
+      // Wait for the DOM to be fully loaded
+      document.addEventListener('DOMContentLoaded', addLoadedClass);
+    }
+  </script>
+  <cmd-window></cmd-window>
+</body>
+</html>

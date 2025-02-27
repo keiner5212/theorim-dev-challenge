@@ -1,0 +1,175 @@
+:root{
+    --blue: rgb(35,37,62);
+    --btn: rgb(0, 120, 212);
+    --btn-hover: rgba(0, 103, 181, 1);
+    --btn-active: rgb(0, 91, 161);
+    --red: rgb(250,63,0);
+    --yellow: rgb(253,209,0);
+    --green: rgb(94,182,0);
+    --b1: #1a232d;
+    --b1a: rgba(26, 35, 45,.65);
+    --b2: rgba(26, 35, 45,.5);
+    --b3: rgba(26, 35, 45,.2);
+    --b4: rgb(243,243,244);
+    --ttl: 'Mulish';
+    --action: #0078d4;
+    --active: #0078d4;
+    --tap: #0078d4;
+    /* --accent: #67217A; */
+    --accent: rgb(0, 91, 161);
+    --warning: rgb(250,63,0);
+    --button: rgb(240 240 240);
+    --button-text: rgba(26, 35, 45, 0.75);
+    --button-hover: rgb(230 230 230);
+
+
+    /* Vibrant & Eye-Catching Accents */
+    --bg1: #1c1f24;
+    --bg2: #21252b;
+    --bg3: #373e48;
+    --bg4: #4e5665;
+    --bg5: #6f7b90;
+    --bg6: #9aa3b1;
+    --bg7: #f1f2f4;
+
+    --f1: #1c1f24;
+    --f2: #373e48;
+    --f3: #6f7b90;
+    --f4: #9aa3b1;
+
+    --bg1-active: #00aaff;
+    --bg3-active: #ff5f57;
+
+    --coral-red: #ff5f57;
+    --golden-yellow: #ffb400;
+    --electric-cyan: #00d4ff;
+    
+    /* Sophisticated & Subtle Accents */
+    --soft-teal: #a8dadc;
+    --muted-peach: #ffcf99;
+    --desaturated-gold: #b3a369;
+    
+    /* Modern & Minimal Accents */
+    --muted-brick-red: #f05454;
+    --soft-green: #6dd47e;
+    --soft-sky-blue: #8ecae6;
+    
+}
+
+
+html,body{
+    position: absolute;
+    flex-direction: row;
+    width: 100vw;
+    height: 100vh;
+    font-size: 14px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'Plex';
+    background: rgb(250,250,250);
+    color: var(--b1);
+}
+
+
+body{
+    opacity: 0;
+    transition: opacity .25s ease-out;
+}
+
+body.loaded{
+    opacity: 1;
+}
+
+
+
+
+
+/* Splash  */
+
+
+
+/* Resets */
+input,button,textarea{
+    outline: none;
+    background: none;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+input:focus,button:focus,textarea:focus{
+    outline: none;
+}
+
+/* Main */
+
+
+/* Admin */
+.admin-select{
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 15px 0px 10px 0px;
+}
+.admin-button{
+    border: 2px solid var(--b2);
+    color: var(--b1);
+    opacity: .85;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 5px 10px;
+    min-width: 120px;
+    margin: 0 20px;
+    transition: opacity .2s ease-in-out;
+    font-family: var(--ttl);
+}
+.admin-button.active{
+    border: 2px solid var(--red);
+    color: var(--red);
+    opacity: 1;
+    font-weight: 650;
+}
+.admin-button:hover{
+    opacity: 1;
+}
+.table-container{
+    flex: 1 1 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 15px;
+}
+
+.table-container elmnts-table{
+    flex: 1 1 100%;
+}
+
+/* Scroll */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+/* Custom Elements */
+nav-bar:not(:defined),
+tab-bar:not(:defined){
+    opacity: 0;
+}
+
+
+@font-face {
+    font-family: 'Plex';
+    src: url(./fonts/plex.ttf) format('truetype');
+}

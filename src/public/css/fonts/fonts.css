@@ -1,0 +1,38 @@
+/* Fonts */
+@font-face {
+    font-family: 'bpmn';
+    font-weight: normal;
+    font-style: normal;
+    src: url('./bpmn.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Mulish';
+    src: url('./Mulish.ttf');
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('./OpenSans.ttf');
+    font-weight: 1 1000;
+}
+
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    src: url('./MaterialSymbolsSharp.ttf') format('woff');
+}
+
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;  /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+}
