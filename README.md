@@ -1,6 +1,91 @@
 # Dev Challenge | Espanol
 
 
+## Theorim Stack
+
+	•	Back End: Node.js y Express
+	•	Front End: Native vanilla JS con Custom Elements
+	•	Hosting: AWS EC2 en un Autoscaling Group con Application Load Balancer
+	•	Data: AWS DynamoDB y S3 para almacenamiento de archivos
+	•	Authentication: AWS Cognito
+
+## Filosofía de Desarrollo
+
+La filosofía de desarrollo de Theorim se basa en mantener la simplicidad limitando las dependencias, evitando procesos de compilación complejos, eliminando capas de abstracción y usando funciones nativas de JavaScript en lugar de frameworks y librerías.
+	•	No se utilizan librerías ni frameworks en el front end
+	•	En el back end, las dependencias están limitadas a AWS SDKs y librerías base como Express
+	•	La infraestructura de AWS se implementa con CloudFormation templates, sin herramientas auxiliares ni capas de abstracción adicionales
+
+## Conceptos Importantes
+
+Las siguientes tecnologías son componentes clave de la aplicación Theorim. Comprender estos conceptos facilitará la comprensión de su arquitectura:
+
+* [DynamoDB](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GettingStartedDynamoDB.html)
+* [JS Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_custom_elements)
+* [JSON Schema](https://json-schema.org/learn)
+* [AJV](https://ajv.js.org/)
+* [expressjs](https://expressjs.com/en/starter/hello-world.html)
+
+
+## Estructura General de la Aplicación
+
+Theorim permite a los usuarios crear esquemas de datasets personalizados, asignar permisos a esos esquemas y distribuirlos para que otros usuarios los accedan y editen.
+	•	Como modeler, los usuarios definen esquemas y campos en la UI. Estos se almacenan como registros individuales en DynamoDB.
+	•	El módulo engine-hydrator.js en el back end compila estos registros en JSON schemas anidados.
+	•	El JSON schema se usa en el front end para renderizar inputs y vistas de UI para los usuarios.
+	•	En el back end, el JSON schema se usa para validar los datos recibidos desde el cliente.
+	•	Los JSON schemas se almacenan como "rows" en DynamoDB.
+	•	La aplicación tiene una función llamada hydrator (engine-hydrator.js) que extrae cada "row", la formatea como JSON schema y la almacena en memoria en el módulo jschema-engine, mejorando el rendimiento en la validación de cada request.
+
+## Estructura del Código
+Back End (src/modules)
+	•	index.js: Punto de entrada principal de Express, enruta las solicitudes al módulo correcto.
+	•	DataUser.js / Admin.js / Modeler.js: Contienen los endpoints de cada módulo de la aplicación.
+	•	jschema-engine: Librería principal de utilidades. Maneja la interacción con AWS, autorización de requests y validación de estructuras de datos en los POST requests.
+	•	engine-hydrator.js: Extrae esquemas de la base de datos, los convierte en JSON schemas y los almacena en jschema-engine para mejorar la performance en la validación.
+Front End (src/public)
+	•	app_controller.js: Script principal de inicialización, maneja la carga y renderizado inicial.
+	•	/data_components: Custom Elements que interactúan directamente con el back end.
+	•	/elmnts: Componentes Custom Elements modulares que son independientes y no comunican con el back end.
+	•	/globals: Variables globales.
+	•	/modules: Componentes que renderizan las secciones principales de la aplicación (user, modeler, admin, etc.).
+
+## Desafío para Desarrolladores
+
+Desafío: Proponer cambios en el código para que la función refresh en engine-hydrator.js solo extraiga y reformatee los esquemas que han sido actualizados desde la última ejecución.
+Pasos
+	•	Revisa los archivos __partitions.json y prueba_paula.json. Estos son extractos de la base de datos que representan los datos de la clave primaria de __partitions y el esquema generado por el usuario a partir del desafío empresarial.
+    •   Revisar el código en engine-hydrator.js
+	•	Esta función extrae los esquemas creados por los usuarios desde DynamoDB y los convierte en JSON schemas.
+	•	Se ejecuta automáticamente cada 5 minutos y extrae TODOS los esquemas y datasets, actualizándolos con los cambios.
+	•	Esto genera un retraso de hasta 5 minutos en la visualización de cambios en Modeler, lo cual es ineficiente.
+	•	Revisar el código en src/modules/Modeler.js y jschema-engine/engine.js
+	•	Estos módulos contienen las funciones utilizadas para actualizar esquemas en la sección de modeler.
+	•	Crear una rama de desarrollo
+	•	Hacer un branch desde p/1.7/dev llamado feature/[tus-iniciales] con los cambios.
+Pistas
+	•	DynamoDB requiere una primary key exacta para cada consulta.
+	•	Cada vez que se crea un dataset, se genera un registro con:
+	•	pk = "__partition"
+	•	sk = "<partition_name>"
+	•	Consultar pk="__partition" devuelve una lista de todos los datasets y su información básica.
+	•	Será necesario almacenar el lastUpdate timestamp cada vez que una partition se actualice.
+	•	Modificar la consulta de engine-hydrator para que solo extraiga elementos con un lastUpdated mayor al último tiempo de ejecución.
+	•	En /jschema-engine/helpers/$db.js, la función exports.query permite consultar los datos más recientes:
+db.query({ pk: '__partition', column_name: 'operator!value' })
+Ejemplo de consulta
+db.query({ pk: '__partition', name: '=!my_data_set' })
+
+Bonus
+	•	Identificar una mejora en la aplicación que:
+	•	Corrija un bug
+	•	Mejore el rendimiento
+	•	Agregue una funcionalidad interesante
+	•	Crear una rama feature/[tus-iniciales]-bonus con los cambios.
+	•	No es necesario desarrollar la mejora completamente, pero al menos incluir comentarios en el código indicando dónde deberían realizarse los cambios.
+
+
+
 
 ________
 
@@ -58,6 +143,7 @@ _The features below are key components of the Theorim application. Learning the 
 
 **Challenge: Propose code changes so that the refresh function in engine-hydrator.js only pulls and reformats schemas that have been updated since the last run.**
 
+0. Review the __partitions.json and prueba_paula.json files. These are extracts from the database that represent the __partitions PK data and the user-generated schema from the business challenge.
 1. Review the code in engine-hydrator.js. This function pulls user-created schemas from DynamoDB and formats them as [JSON schemas](https://json-schema.org/learn). The function runs automatically every 5 minutes and pulls ALL schemas and datasets from DynamoDB and refreshes them with updates. As a result, it takes up to 5 minutes for changes made in Modeler to show up to users. This is inefficient since not all schemas are updated every 5 minutes.
 2. Review the code in src/modules/Modeler.js and jschema-engine/engine.js. These modules have all the functions used to update schemas through the "modeler" application section.
 3. Create a branch off p/1.7/dev named as feature/[your-initials] with your changes.

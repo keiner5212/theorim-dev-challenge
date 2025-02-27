@@ -1,0 +1,626 @@
+[
+    {
+        "__parent": null,
+        "__object": "dataset",
+        "_owners": [],
+        "__id": "dataset$prueba_paula_4",
+        "sk": "dataset$prueba_paula_4",
+        "description": "",
+        "pk": "defs/prueba_paula_4",
+        "name": "prueba_paula_4",
+        "$class": "dataset",
+        "title": "Prueba Paula 4"
+    },
+    {
+        "__object": "jtable",
+        "__parent": "dataset$prueba_paula_4",
+        "__id": "dataset$prueba_paula_4-jtable$work_board",
+        "$tableViews": [
+            {
+                "name": "All",
+                "filters": [],
+                "sort": [],
+                "cols": [
+                    {
+                        "column": {
+                            "name": "name",
+                            "label": "name"
+                        },
+                        "width": 1
+                    },
+                    {
+                        "column": {
+                            "name": "description",
+                            "label": "description"
+                        },
+                        "width": 1
+                    },
+                    {
+                        "column": {
+                            "name": "budget",
+                            "label": "budget"
+                        },
+                        "width": 1
+                    },
+                    {
+                        "column": {
+                            "name": "created_date",
+                            "label": "created_date"
+                        },
+                        "width": 1
+                    },
+                    {
+                        "column": {
+                            "name": "due_date",
+                            "label": "due_date"
+                        },
+                        "width": 1
+                    },
+                    {
+                        "column": {
+                            "name": "status",
+                            "label": "status"
+                        },
+                        "width": 1
+                    }
+                ]
+            }
+        ],
+        "__created": 1740404399252,
+        "name": "work_board",
+        "$class": "jtable",
+        "__uid": "jtable$work_board",
+        "allow": {},
+        "sk": "dataset$prueba_paula_4-jtable$work_board",
+        "index_def": {
+            "name": "index",
+            "$is": "string",
+            "label": "ID"
+        },
+        "description": "",
+        "pk": "defs/prueba_paula_4",
+        "__updated": 1740404399252,
+        "title": "Work Board"
+    },
+    {
+        "__object": "schema",
+        "__parent": "dataset$prueba_paula_4-jtable$work_board",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$category",
+        "properties": {
+            "sk": {
+                "name": "sk",
+                "readOnly": true,
+                "viewers": [],
+                "label": "Sort Key",
+                "type": "string",
+                "editors": []
+            },
+            "pk": {
+                "name": "pk",
+                "readOnly": true,
+                "viewers": [],
+                "label": "Primary Key",
+                "type": "string",
+                "editors": []
+            }
+        },
+        "$titleField": "index",
+        "$class": "schema",
+        "$formViews": [
+            {
+                "name": "All",
+                "cols": [
+                    {
+                        "name": "name",
+                        "label": "Name"
+                    }
+                ]
+            }
+        ],
+        "required": [
+            {
+                "name": "index",
+                "label": "ID"
+            }
+        ],
+        "top": true,
+        "$allow": {
+            "create": true,
+            "delete": true
+        },
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$category",
+        "description": "",
+        "pk": "defs/prueba_paula_4",
+        "$id": "category",
+        "title": "Category"
+    },
+    {
+        "$index": true,
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$category",
+        "__object": "string",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$category-string$index",
+        "label": "ID",
+        "cls": "property",
+        "__created": 1740404413366,
+        "$is": "string",
+        "name": "index",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "string$index",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$category-string$index",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404413366,
+        "type": "string",
+        "title": "ID"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$category",
+        "__object": "string",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$category-string$name",
+        "label": "Name",
+        "cls": "property",
+        "__created": 1740404479420,
+        "$is": "string",
+        "name": "name",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "string$name",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$category-string$name",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404479420,
+        "type": "string",
+        "title": "Name"
+    },
+    {
+        "$parents": [
+            {
+                "title": "Category",
+                "$id": "category"
+            }
+        ],
+        "__object": "schema",
+        "__parent": "dataset$prueba_paula_4-jtable$work_board",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$project",
+        "properties": {
+            "sk": {
+                "name": "sk",
+                "readOnly": true,
+                "viewers": [],
+                "label": "Sort Key",
+                "type": "string",
+                "editors": []
+            },
+            "pk": {
+                "name": "pk",
+                "readOnly": true,
+                "viewers": [],
+                "label": "Primary Key",
+                "type": "string",
+                "editors": []
+            }
+        },
+        "$titleField": "index",
+        "$class": "schema",
+        "$formViews": [
+            {
+                "name": "All",
+                "cols": [
+                    {
+                        "name": "name",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "description",
+                        "label": "Description"
+                    },
+                    {
+                        "name": "created_date",
+                        "label": "Created Date"
+                    },
+                    {
+                        "name": "due_date",
+                        "label": "Due Date"
+                    },
+                    {
+                        "name": "budget",
+                        "label": "Budget"
+                    },
+                    {
+                        "name": "status",
+                        "label": "Status"
+                    }
+                ]
+            }
+        ],
+        "required": [
+            {
+                "name": "index",
+                "label": "ID"
+            }
+        ],
+        "top": false,
+        "$allow": {
+            "create": true,
+            "delete": true
+        },
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$project",
+        "description": "",
+        "pk": "defs/prueba_paula_4",
+        "$id": "project",
+        "title": "Project"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$project",
+        "__object": "cdate",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$project-cdate$created_date",
+        "label": "Created Date",
+        "cls": "property",
+        "__created": 1740404537608,
+        "$is": "cdate",
+        "name": "created_date",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "cdate$created_date",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$project-cdate$created_date",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404537608,
+        "type": "string",
+        "title": "Created Date"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$project",
+        "__object": "date",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$project-date$due_date",
+        "label": "Due Date",
+        "cls": "property",
+        "__created": 1740404556298,
+        "$is": "date",
+        "name": "due_date",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "date$due_date",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$project-date$due_date",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404556298,
+        "type": "string",
+        "title": "Due Date"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$project",
+        "__object": "multiline",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$project-multiline$description",
+        "label": "Description",
+        "cls": "property",
+        "__created": 1740404526860,
+        "$is": "multiline",
+        "name": "description",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "multiline$description",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$project-multiline$description",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404526860,
+        "type": "string",
+        "title": "Description"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$project",
+        "__object": "number",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$project-number$budget",
+        "label": "Budget",
+        "cls": "property",
+        "__created": 1740404568429,
+        "$is": "number",
+        "name": "budget",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "number$budget",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$project-number$budget",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404568429,
+        "type": "number",
+        "title": "Budget"
+    },
+    {
+        "__object": "select",
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$project",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$project-select$status",
+        "label": "Status",
+        "cls": "property",
+        "__created": 1740404580422,
+        "$is": "select",
+        "name": "status",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "select$status",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$project-select$status",
+        "editors": [],
+        "pk": "defs/prueba_paula_4",
+        "__updated": 1740404580422,
+        "enum": [
+            "Pending",
+            "In process",
+            "Completed"
+        ],
+        "type": "string",
+        "title": "Status"
+    },
+    {
+        "$index": true,
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$project",
+        "__object": "string",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$project-string$index",
+        "label": "ID",
+        "cls": "property",
+        "__created": 1740404428953,
+        "$is": "string",
+        "name": "index",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "string$index",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$project-string$index",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404428953,
+        "type": "string",
+        "title": "ID"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$project",
+        "__object": "string",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$project-string$name",
+        "label": "Name",
+        "cls": "property",
+        "__created": 1740404502365,
+        "$is": "string",
+        "name": "name",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "string$name",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$project-string$name",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404502365,
+        "type": "string",
+        "title": "Name"
+    },
+    {
+        "$parents": [
+            {
+                "title": "Project",
+                "$id": "project"
+            }
+        ],
+        "__object": "schema",
+        "__parent": "dataset$prueba_paula_4-jtable$work_board",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$task",
+        "properties": {
+            "sk": {
+                "name": "sk",
+                "readOnly": true,
+                "viewers": [],
+                "label": "Sort Key",
+                "type": "string",
+                "editors": []
+            },
+            "pk": {
+                "name": "pk",
+                "readOnly": true,
+                "viewers": [],
+                "label": "Primary Key",
+                "type": "string",
+                "editors": []
+            }
+        },
+        "$titleField": "index",
+        "$class": "schema",
+        "$formViews": [
+            {
+                "name": "All",
+                "cols": [
+                    {
+                        "name": "name",
+                        "label": "Name"
+                    },
+                    {
+                        "name": "description",
+                        "label": "Description"
+                    },
+                    {
+                        "name": "created_date",
+                        "label": "Created Date"
+                    },
+                    {
+                        "name": "due_date",
+                        "label": "Due Date"
+                    },
+                    {
+                        "name": "file",
+                        "label": "File"
+                    },
+                    {
+                        "name": "status",
+                        "label": "Status"
+                    }
+                ]
+            }
+        ],
+        "required": [
+            {
+                "name": "index",
+                "label": "ID"
+            }
+        ],
+        "top": false,
+        "$allow": {
+            "create": true,
+            "delete": true
+        },
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$task",
+        "description": "",
+        "pk": "defs/prueba_paula_4",
+        "$id": "task",
+        "title": "Task"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$task",
+        "__object": "date",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$task-date$created_date",
+        "label": "Created Date",
+        "cls": "property",
+        "__created": 1740404641209,
+        "$is": "date",
+        "name": "created_date",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "date$created_date",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$task-date$created_date",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404641209,
+        "type": "string",
+        "title": "Created Date"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$task",
+        "__object": "date",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$task-date$due_date",
+        "label": "Due Date",
+        "cls": "property",
+        "__created": 1740404650942,
+        "$is": "date",
+        "name": "due_date",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "date$due_date",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$task-date$due_date",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404650942,
+        "type": "string",
+        "title": "Due Date"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$task",
+        "__object": "file",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$task-file$file",
+        "label": "File",
+        "cls": "property",
+        "__created": 1740404715192,
+        "$is": "file",
+        "name": "file",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "file$file",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$task-file$file",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404715192,
+        "type": "object",
+        "title": "File"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$task",
+        "__object": "multiline",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$task-multiline$description",
+        "label": "Description",
+        "cls": "property",
+        "__created": 1740404626982,
+        "$is": "multiline",
+        "name": "description",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "multiline$description",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$task-multiline$description",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404626982,
+        "type": "string",
+        "title": "Description"
+    },
+    {
+        "__object": "select",
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$task",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$task-select$status",
+        "label": "Status",
+        "cls": "property",
+        "__created": 1740404664120,
+        "$is": "select",
+        "name": "status",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "select$status",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$task-select$status",
+        "editors": [],
+        "pk": "defs/prueba_paula_4",
+        "__updated": 1740404664120,
+        "enum": [
+            "Pending",
+            "In process",
+            "Completed"
+        ],
+        "type": "string",
+        "title": "Status"
+    },
+    {
+        "$index": true,
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$task",
+        "__object": "string",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$task-string$index",
+        "label": "ID",
+        "cls": "property",
+        "__created": 1740404450793,
+        "$is": "string",
+        "name": "index",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "string$index",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$task-string$index",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404450793,
+        "type": "string",
+        "title": "ID"
+    },
+    {
+        "__parent": "dataset$prueba_paula_4-jtable$work_board-schema$task",
+        "__object": "string",
+        "__id": "dataset$prueba_paula_4-jtable$work_board-schema$task-string$name",
+        "label": "Name",
+        "cls": "property",
+        "__created": 1740404617817,
+        "$is": "string",
+        "name": "name",
+        "$class": "property",
+        "readOnly": false,
+        "__uid": "string$name",
+        "viewers": [],
+        "sk": "dataset$prueba_paula_4-jtable$work_board-schema$task-string$name",
+        "pk": "defs/prueba_paula_4",
+        "editors": [],
+        "__updated": 1740404617817,
+        "type": "string",
+        "title": "Name"
+    }
+]
