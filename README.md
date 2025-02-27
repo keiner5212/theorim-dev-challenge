@@ -62,7 +62,7 @@ Pasos
 	•	Revisar el código en src/modules/Modeler.js y jschema-engine/engine.js
 	•	Estos módulos contienen las funciones utilizadas para actualizar esquemas en la sección de modeler.
 	•	Crear una rama de desarrollo
-	•	Hacer un branch desde p/1.7/dev llamado feature/[tus-iniciales] con los cambios.
+	•	Hacer un branch desde main llamado feature/[tus-iniciales] con los cambios.
 Pistas
 	•	DynamoDB requiere una primary key exacta para cada consulta.
 	•	Cada vez que se crea un dataset, se genera un registro con:
@@ -146,7 +146,7 @@ _The features below are key components of the Theorim application. Learning the 
 0. Review the __partitions.json and prueba_paula.json files. These are extracts from the database that represent the __partitions PK data and the user-generated schema from the business challenge.
 1. Review the code in engine-hydrator.js. This function pulls user-created schemas from DynamoDB and formats them as [JSON schemas](https://json-schema.org/learn). The function runs automatically every 5 minutes and pulls ALL schemas and datasets from DynamoDB and refreshes them with updates. As a result, it takes up to 5 minutes for changes made in Modeler to show up to users. This is inefficient since not all schemas are updated every 5 minutes.
 2. Review the code in src/modules/Modeler.js and jschema-engine/engine.js. These modules have all the functions used to update schemas through the "modeler" application section.
-3. Create a branch off p/1.7/dev named as feature/[your-initials] with your changes.
+3. Create a branch off main named as feature/[your-initials] with your changes.
 
 
 **Hints:** 
