@@ -1,39 +1,3 @@
-const Engine = require('./jschema-engine/$engine');
-const { DataModel, UserModel, HistoryModel, RolesModel, LogsModel } = require('./helpers/$model');
-
-const Partitions = {};
-const UPDATE_DELAY = 5 * 60 * 1000; // 5 min
-const UPDATE_TRY_DELAY = 20 * 1000; // 20 seg
-
-function addDefaultDefs() {
-    const adminDef = {
-        name: 'admin',
-        title: 'Admin',
-        jtables: [
-            new DataModel('admin', 'users').obj,
-            new UserModel('admin', 'users').obj,
-            new HistoryModel('admin').obj,
-            new LogsModel().obj
-        ]
-    }
-    Engine.addDef(adminDef);
-}
-
-function defaultModelerDef(datasetName, title) {
-    const dsName = `${datasetName}$modeler`
-    ds = {
-        name: dsName,
-        title: title,
-        jtables: [
-            new DataModel('owner', datasetName).obj,
-            new RolesModel().obj,
-            new UserModel('owner', dsName).obj,
-            new HistoryModel('modeler').obj
-        ]
-    }
-    return ds;
-}
-
 async function pullDatasets() {
     const compileStart = performance.now();
     console.log('Refreshing Datasets');
@@ -200,13 +164,4 @@ async function formatDef(defName) {
     }
 
     return ds;
-}
-
-exports.init = async function () {
-    console.log('Compiling defs');
-    addDefaultDefs();
-    await pullDatasets();
-    console.log('Compile complete');
-    // Engine.fix();
-    setInterval(pullDatasets, UPDATE_TRY_DELAY);
 }

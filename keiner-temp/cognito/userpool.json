@@ -1,0 +1,16 @@
+{
+    "UserPool": {
+        "Id": "local_3ZPKISVm",
+        "Name": "my-test-user-pool",
+        "Policies": {
+            "PasswordPolicy": {
+                "MinimumLength": 8,
+                "RequireUppercase": true,
+                "RequireLowercase": true,
+                "RequireNumbers": true,
+                "RequireSymbols": true,
+                "TemporaryPasswordValidityDays": 7
+            }
+        }
+    }
+}

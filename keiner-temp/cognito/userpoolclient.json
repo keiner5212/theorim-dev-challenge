@@ -1,0 +1,15 @@
+{
+    "UserPoolClient": {
+        "UserPoolId": "local_3ZPKISVm",
+        "ClientName": "my-app-client",
+        "ClientId": "6d1btkbcwmnfguqogvqaz2nzb",
+        "ClientSecret": "0fqbobiuriixfzbm69kn278xc",
+        "LastModifiedDate": "2025-03-01T13:57:28-05:00",
+        "CreationDate": "2025-03-01T13:57:28-05:00",
+        "TokenValidityUnits": {
+            "AccessToken": "hours",
+            "IdToken": "minutes",
+            "RefreshToken": "days"
+        }
+    }
+}

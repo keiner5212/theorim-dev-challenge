@@ -22,8 +22,19 @@ exports.listGroupUsers = async function (groupName) {
     return groupUsers(groupName);
 }
 
+function getCognitoClient() {
+    return new CognitoIdentityProviderClient({ 
+        region: process.env.$APP_REGION,
+        credentials: {
+            accessKeyId: "fakeAccessKey",
+            secretAccessKey: "fakeSecretKey"
+        },
+        endpoint: "http://localhost:9229"
+     }); 
+}
+
 exports.listGroups = async function (dataset) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION }); 
+    const Client = getCognitoClient(); 
     const params = {
         UserPoolId: process.env.$APP_USERPOOLID, // replace with your user pool ID
     };
@@ -58,7 +69,7 @@ exports.listGroups = async function (dataset) {
 };
 
 exports.listAllUsers = async function (qry) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     const params = {
         UserPoolId: process.env.$APP_USERPOOLID, // replace with your user pool ID
     };
@@ -82,7 +93,7 @@ exports.listAllUsers = async function (qry) {
 };
 
 exports.removeUserGroup = async function (username, groupName) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     const command = new AdminRemoveUserFromGroupCommand({
         Username: username,
         GroupName: groupName,
@@ -94,7 +105,7 @@ exports.removeUserGroup = async function (username, groupName) {
 }
 
 exports.getEmail = async function (username) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     const command = new AdminGetUserCommand({
         Username: username,
         UserPoolId: process.env.$APP_USERPOOLID
@@ -112,8 +123,9 @@ exports.getEmail = async function (username) {
     }
 }
 
+process.env.$APP_USERPOOLID='local_3ZPKISVm';
 exports.getUser = async function (username) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     const command = new AdminGetUserCommand({
         Username: username,
         UserPoolId: process.env.$APP_USERPOOLID
@@ -144,7 +156,7 @@ exports.getUser = async function (username) {
 }
 
 exports.getUserGroups = async function (username) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     const response = await Client.send(new AdminListGroupsForUserCommand({
         Username: username,
         UserPoolId: process.env.$APP_USERPOOLID
@@ -154,7 +166,7 @@ exports.getUserGroups = async function (username) {
 }
 
 exports.createGroup = async function (groupName) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION });
+    const Client = getCognitoClient();
 
     try {
         await Client.send(new CreateGroupCommand({
@@ -172,7 +184,7 @@ exports.createGroup = async function (groupName) {
 }
 
 exports.newUser = async function (email) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     const params = {
         UserPoolId: process.env.$APP_USERPOOLID, // replace with your user pool ID
         Username: email,
@@ -194,7 +206,7 @@ exports.newUser = async function (email) {
 }
 
 exports.deleteUser = async function (username) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
 
     const command = new AdminDeleteUserCommand({
         Username: username,
@@ -206,7 +218,7 @@ exports.deleteUser = async function (username) {
 }
 
 exports.editUser = async function (username) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     const params = {
         UserPoolId: process.env.$APP_USERPOOLID,
         Username: username,
@@ -227,7 +239,7 @@ exports.editUser = async function (username) {
 }
 
 exports.assignRole = async function (username, groupName) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     const addUserToGroupCommand = new AdminAddUserToGroupCommand({
         GroupName: groupName,
         Username: username,
@@ -259,7 +271,7 @@ exports.assignRole = async function (username, groupName) {
 
 exports.removeRole = async function (username,role) {
     // Datasets
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     const command = new AdminRemoveUserFromGroupCommand({
         Username: username,
         GroupName: role,
@@ -277,7 +289,7 @@ exports.removeRole = async function (username,role) {
 }
 
 exports.deleteGroup = async function (groupName) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION });
+    const Client = getCognitoClient();
 
     try {
         await Client.send(new DeleteGroupCommand({
@@ -297,7 +309,7 @@ exports.deleteGroup = async function (groupName) {
 }
 
 exports.setGroupUsers = async function (groupName, users) {
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION }); 
+    const Client = getCognitoClient(); 
     const existingUsers = await groupUsers(groupName);
     const emailsToAdd = users.filter(u => !existingUsers.find(eu => eu.email === u));
     const usersToAdd = emailsToAdd.length > 0 ? await getUserNames(emailsToAdd) : [];
@@ -339,7 +351,7 @@ exports.resetpw = async function (username) {
     if (!validRequest.ok){return { status: 400, msg: validRequest.errors };}
     
     // Reset Password
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION}); 
+    const Client = getCognitoClient(); 
     try {
         await Client.send(new AdminResetUserPasswordCommand({
             Username: body.username,
@@ -356,7 +368,7 @@ exports.resetpw = async function (username) {
 // ---- INLINE HELPERS ----
 
 async function groupUsers(groupName) {
-    const client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION });
+    const client = getCognitoClient();
 
     const users = [];
     let paginationToken = null;
@@ -397,7 +409,7 @@ async function groupUsers(groupName) {
 
 async function getUserNames(emails){
     // Initialize the AWS SDK
-    const Client = new CognitoIdentityProviderClient({ region: process.env.$APP_REGION }); 
+    const Client = getCognitoClient(); 
     if (!emails || emails.length < 1){ return [] }
 
     const users = []

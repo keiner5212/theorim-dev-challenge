@@ -2,8 +2,7 @@ const Engine = require('./jschema-engine/$engine');
 const { DataModel, UserModel, HistoryModel, RolesModel, LogsModel } = require('./helpers/$model');
 
 const Partitions = {};
-const UPDATE_DELAY = 5 * 60 * 1000; // 5 min
-const UPDATE_TRY_DELAY = 20 * 1000; // 20 seg
+const UPDATE_DELAY = 3 * 60 * 1000;
 
 function addDefaultDefs() {
     const adminDef = {
@@ -51,7 +50,7 @@ async function pullDatasets() {
         const prm = formatDef(p.name)
             .then(def => {
                 Engine.addDef(def);
-                Partitions[p.name].lastPull = Date.now(); // no vi que esto se usara, pero lo dejare por si acaso
+                Partitions[p.name].lastPull = Date.now();
             })
             .catch(e => {
                 console.log('Def not valid', p.name);
@@ -208,5 +207,5 @@ exports.init = async function () {
     await pullDatasets();
     console.log('Compile complete');
     // Engine.fix();
-    setInterval(pullDatasets, UPDATE_TRY_DELAY);
+    setInterval(pullDatasets, UPDATE_DELAY);
 }

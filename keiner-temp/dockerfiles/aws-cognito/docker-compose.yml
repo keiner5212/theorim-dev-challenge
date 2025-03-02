@@ -1,0 +1,10 @@
+services:
+  cognito-local:
+    image: jagregory/cognito-local
+    container_name: cognito-local
+    ports:
+      - "9229:9229" 
+    environment:
+      REGION: us-east-1
+      USER_POOL_ID: local-user-pool
+      CLIENT_ID: local-client

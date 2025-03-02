@@ -1,0 +1,33 @@
+{
+    "app": "THEORIM-i-DEV-THEORIM-XYZ",
+    "region": "us-east-1",
+    "user": {
+        "username": "e47844c8-20c1-70c6-c51d-654d1388b6b6",
+        "groups": [
+            "challenge_d_keiner$modeler",
+            "challenge_d_keiner-manager"
+        ],
+        "roles": {
+            "challenge_d_keiner$modeler": "user",
+            "challenge_d_keiner": "manager"
+        },
+        "email": "keinerjosealvaradoquintero@gmail.com"
+    },
+    "version": "2025-03-01T14:07\n1.7\n\n",
+    "env": "dev",
+    "metadata": "{}",
+    "entitlements": {
+        "modeler": [
+            {
+                "name": "challenge_d_keiner$modeler",
+                "title": "Challenge D Keiner"
+            }
+        ],
+        "user": [
+            {
+                "name": "challenge_d_keiner",
+                "title": "Challenge D Keiner"
+            }
+        ]
+    }
+}

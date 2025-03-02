@@ -20,9 +20,9 @@ const Validators = {};
 // ==== Core Functions =========================
 // =============================================
 
-exports.listPartitions = async function (milisecondsOfDelay = null) {
+exports.listPartitions = async function (minutesDifference = null) {
     const res = await this.db.query({ pk: '_partition' });
-    const filteredItems = res.Items.filter(item => $utils.isOlderThanMilliseconds(item.lastUpdated, milisecondsOfDelay));
+    const filteredItems = res.Items.filter(item => $utils.isOlderThanMilliseconds(item.lastUpdated, minutesDifference));
     return filteredItems;
 }
 
